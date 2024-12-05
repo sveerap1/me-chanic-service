@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: me-chanic
-        image: TODO/me-chanic-app:latest
+        image: sansar1/me-chanic-service:0.1
         ports:
         - containerPort: 8000
         env:
