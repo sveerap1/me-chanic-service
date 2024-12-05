@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: me-chanic-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: me-chanic
+  template:
+    metadata:
+      labels:
+        app: me-chanic
+    spec:
+      containers:
+      - name: me-chanic
+        image: TODO/me-chanic-app:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: LLAMA3_API_URL
+          value: "http://ollama-service:11434/api/generate"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: me-chanic-service
+spec:
+  selector:
+    app: me-chanic
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+  type: LoadBalancer
+

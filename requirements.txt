@@ -1,0 +1,7 @@
+transformers
+datasets
+fastapi
+uvicorn
+langchain
+# langchain-ollama
+# ollama
